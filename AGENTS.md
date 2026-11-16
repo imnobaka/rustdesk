@@ -1,5 +1,11 @@
 # RustDesk Guide
 
+## Kevin's fork: core skills and project modules
+
+Use the personal `test-e2e` skill for live end-to-end acceptance with event-driven synchronization and explicit timeout/race scenarios. The module index links the project test specification; a written specification is not an executed test.
+
+Use the personal `simplify`, `structure`, and `learn` skills for shared-cause fixes, file-boundary reviews, and preserving verified lessons. Read [the project module index](docs/agent-modules/index.md) for relevant project evidence and ownership maps. Maintain affected module entries when code or requirements invalidate them. Keep portable guidance in core skills and project facts in modules; do not duplicate generated inventories or copy every module into context. Kevin's explicit instructions about avoiding redundant helpers take precedence over conflicting upstream preferences below.
+
 ## Project Layout
 
 ### Directory Structure
