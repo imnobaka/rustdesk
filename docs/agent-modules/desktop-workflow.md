@@ -42,3 +42,11 @@ Status: observed setup lesson, documented prevention. Setup is incomplete. Revis
 The [source quality module](source-quality.md) documents the implemented inventory and file-review gate, coverage limitations, manifest format, and validation status. Existing upstream files and duplicates are explicitly unreviewed. Remote enforcement must be verified separately.
 
 Before claiming a workflow improvement, verify the installed build on the Mac-to-Windows path: access to all three physical monitors, switching without reconnecting, local versus remote shortcut routing, focus recovery, and hide/recall behavior. Add relevant automated regressions around changed seams and distinguish local tests from CI and live acceptance.
+
+### RD-003 — Direct monitor shortcuts (implementation in progress)
+
+The fork adds configurable display 1, 2 and 3 actions through the existing shortcut registry and `openDisplay` route. Defaults use Primary+Alt+Shift+1/2/3 (Command+Option+Shift on macOS). Existing saved configurations are preserved; add bindings in settings or reset defaults to adopt them. Numbers refer to the current peer display order, not persistent physical-monitor identities. Missing displays and disallowed privacy modes are no-ops. The existing separate-window preference remains authoritative.
+
+Codex review caught noncanonical digit names in the first draft. Corrected both Rust/Dart defaults and added physical-key normalization regressions; fixture parity alone cannot detect a consistently wrong default on both sides. No new matcher, transport API, or monitor-opening helper was introduced. Live acceptance remains pending; these edits are not in the installed 1.5.3 release.
+
+Setup route: use Kevin's existing DeskPort session, not Zoho. Native automation must derive coordinates from current window bounds after activation. Observe a correlated visible change before crediting an input test; a user dismissing a dialog is not automation evidence. Windows Start search and a separate setup PowerShell window have now verified DeskPort pointer and keyboard delivery. Windows RustDesk 1.5.3 downloaded from the official release, SHA-256 matched, and portable app launched on 2026-11-16. Persistent installation and RustDesk connection remain pending.

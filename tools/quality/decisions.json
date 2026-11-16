@@ -1,5 +1,14 @@
 {
   "schema": 1,
-  "duplicates": {},
+  "duplicates": {
+    "test:78e1f06210e7db23cf3e666720ae17af4b9751c918f4506c6a58fb1de735cd72": {
+      "members": [
+        "src/keyboard/shortcuts.rs::tests::dispatch_keeps_fired_key_after_session_close::<closure@1102:23>",
+        "src/keyboard/shortcuts.rs::tests::focus_changing_actions_run_on_release::<closure@1535:23>"
+      ],
+      "decision": "distinct-contracts",
+      "reason": "Existing test-local dispatch closures are unchanged; preceding shortcut additions moved their line-based identities. One test validates ownership after session close, the other deferred execution after key release. Keeping each three-line setup local preserves independent test scenarios without a shared harness abstraction."
+    }
+  },
   "files": {}
 }

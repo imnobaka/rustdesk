@@ -22,6 +22,9 @@ pub mod action_id {
     pub const SWITCH_DISPLAY_NEXT: &str  = "switch_display_next";
     pub const SWITCH_DISPLAY_PREV: &str  = "switch_display_prev";
     pub const SWITCH_DISPLAY_ALL: &str   = "switch_display_all";
+    pub const SWITCH_DISPLAY_1: &str     = "switch_display_1";
+    pub const SWITCH_DISPLAY_2: &str     = "switch_display_2";
+    pub const SWITCH_DISPLAY_3: &str     = "switch_display_3";
     pub const SCREENSHOT: &str           = "screenshot";
     pub const INSERT_LOCK: &str          = "insert_lock";
     pub const REFRESH: &str              = "refresh";
@@ -113,6 +116,9 @@ pub fn default_bindings() -> Vec<Binding> {
         Binding { action: action_id::TOGGLE_FULLSCREEN.into(),         mods: prefix(), key: "enter".into() },
         Binding { action: action_id::SWITCH_DISPLAY_NEXT.into(),       mods: prefix(), key: "arrow_right".into() },
         Binding { action: action_id::SWITCH_DISPLAY_PREV.into(),       mods: prefix(), key: "arrow_left".into() },
+        Binding { action: action_id::SWITCH_DISPLAY_1.into(),          mods: prefix(), key: "digit1".into() },
+        Binding { action: action_id::SWITCH_DISPLAY_2.into(),          mods: prefix(), key: "digit2".into() },
+        Binding { action: action_id::SWITCH_DISPLAY_3.into(),          mods: prefix(), key: "digit3".into() },
         Binding { action: action_id::SCREENSHOT.into(),                mods: prefix(), key: "p".into() },
         Binding { action: action_id::TOGGLE_SHOW_REMOTE_CURSOR.into(), mods: prefix(), key: "m".into() },
         Binding { action: action_id::TOGGLE_MUTE.into(),               mods: prefix(), key: "s".into() },
@@ -780,6 +786,25 @@ mod tests {
              flutter/test/fixtures/default_keyboard_shortcuts.json — update \
              shortcuts.rs, the fixture, and Dart kDefaultShortcutBindings together"
         );
+    }
+
+    #[test]
+    fn direct_display_defaults_match_physical_digits() {
+        let bindings = Bindings {
+            enabled: true,
+            pass_through: false,
+            bindings: default_bindings(),
+        };
+        for (key, action) in [
+            (rdev::Key::Num1, action_id::SWITCH_DISPLAY_1),
+            (rdev::Key::Num2, action_id::SWITCH_DISPLAY_2),
+            (rdev::Key::Num3, action_id::SWITCH_DISPLAY_3),
+        ] {
+            let name = event_to_key_name(&make_press(key)).unwrap();
+            assert_eq!(match_normalized(&name,
+                &[Modifier::Primary, Modifier::Alt, Modifier::Shift], &bindings), Some(action));
+            assert_eq!(match_normalized(&name, &[Modifier::Primary], &bindings), None);
+        }
     }
 
     #[test]

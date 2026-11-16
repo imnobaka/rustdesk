@@ -826,5 +826,8 @@ pub static ref T: std::collections::HashMap<&'static str, &'static str> =
         ("install-directory-not-empty-tip", "A pasta selecionada não está vazia. A instalação pode excluir dados existentes. Considere escolher outra pasta."),
         ("Request approval", "Solicitar aprovação"),
         ("Forever", "Permanentemente"),
+        ("Switch to display 1", ""),
+        ("Switch to display 2", ""),
+        ("Switch to display 3", ""),
     ].iter().cloned().collect();
 }

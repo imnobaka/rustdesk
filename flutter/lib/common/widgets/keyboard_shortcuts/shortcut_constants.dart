@@ -5,6 +5,9 @@ const kShortcutActionToggleFullscreen = 'toggle_fullscreen';
 const kShortcutActionSwitchDisplayNext = 'switch_display_next';
 const kShortcutActionSwitchDisplayPrev = 'switch_display_prev';
 const kShortcutActionSwitchDisplayAll = 'switch_display_all';
+const kShortcutActionSwitchDisplay1 = 'switch_display_1';
+const kShortcutActionSwitchDisplay2 = 'switch_display_2';
+const kShortcutActionSwitchDisplay3 = 'switch_display_3';
 const kShortcutActionScreenshot = 'screenshot';
 const kShortcutActionInsertLock = 'insert_lock';
 const kShortcutActionRefresh = 'refresh';
@@ -105,6 +108,9 @@ final List<Map<String, Object>> kDefaultShortcutBindings = [
     [kShortcutActionToggleFullscreen,       'enter'],
     [kShortcutActionSwitchDisplayNext,      'arrow_right'],
     [kShortcutActionSwitchDisplayPrev,      'arrow_left'],
+    [kShortcutActionSwitchDisplay1,         'digit1'],
+    [kShortcutActionSwitchDisplay2,         'digit2'],
+    [kShortcutActionSwitchDisplay3,         'digit3'],
     [kShortcutActionScreenshot,             'p'],
     [kShortcutActionToggleShowRemoteCursor, 'm'],
     // The tested iPad/Bluetooth keyboard setup did not deliver the complete

@@ -377,6 +377,25 @@ void registerSessionShortcutActions(
     switchDisplayBy(-1);
   });
 
+  final directDisplayActions = [
+    kShortcutActionSwitchDisplay1,
+    kShortcutActionSwitchDisplay2,
+    kShortcutActionSwitchDisplay3,
+  ];
+  for (var display = 0; display < directDisplayActions.length; display++) {
+    final targetDisplay = display;
+    ffi.shortcutModel.register(directDisplayActions[display], () {
+      final pi = ffi.ffiModel.pi;
+      final privacyMode = PrivacyModeState.find(ffi.id).value;
+      if (privacyMode.isNotEmpty &&
+          !allowDisplaySwitchInPrivacyMode(pi, privacyMode)) {
+        return;
+      }
+      if (targetDisplay >= pi.displays.length) return;
+      openDisplay(targetDisplay, pi, updateCursorPos: isMobile);
+    });
+  }
+
   // Switch to all-monitors view — mirrors the toolbar Monitor menu's
   // "all monitors" button (only built when peer has >1 display). Not a
   // toggle: the toolbar button just sets the merged view; another action
