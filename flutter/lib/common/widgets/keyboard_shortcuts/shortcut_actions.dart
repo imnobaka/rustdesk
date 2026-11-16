@@ -47,6 +47,12 @@ class KeyboardShortcutActionGroup {
 final List<KeyboardShortcutActionGroup> kKeyboardShortcutActionGroups = [
   KeyboardShortcutActionGroup('Monitor', [
     KeyboardShortcutActionEntry(
+        kShortcutActionSwitchDisplay1, 'Switch to display 1'),
+    KeyboardShortcutActionEntry(
+        kShortcutActionSwitchDisplay2, 'Switch to display 2'),
+    KeyboardShortcutActionEntry(
+        kShortcutActionSwitchDisplay3, 'Switch to display 3'),
+    KeyboardShortcutActionEntry(
         kShortcutActionSwitchDisplayNext, 'Switch to next display'),
     KeyboardShortcutActionEntry(
         kShortcutActionSwitchDisplayPrev, 'Switch to previous display'),

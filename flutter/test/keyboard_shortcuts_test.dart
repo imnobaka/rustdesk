@@ -55,6 +55,27 @@ void main() {
             'together');
   });
 
+  test('direct display defaults use physical digit key names', () {
+    final actions = [
+      kShortcutActionSwitchDisplay1,
+      kShortcutActionSwitchDisplay2,
+      kShortcutActionSwitchDisplay3,
+    ];
+    final keys = [
+      PhysicalKeyboardKey.digit1,
+      PhysicalKeyboardKey.digit2,
+      PhysicalKeyboardKey.digit3,
+    ];
+    for (var i = 0; i < actions.length; i++) {
+      final binding = kDefaultShortcutBindings.singleWhere(
+          (binding) => binding['action'] == actions[i]);
+      expect(binding['key'], physicalKeyName(keys[i]));
+      expect(binding['mods'], ['primary', 'alt', 'shift']);
+      expect(allActionEntries(kKeyboardShortcutActionGroups)
+          .where((entry) => entry.id == actions[i]), hasLength(1));
+    }
+  });
+
   test('save order preserves macOS control modifier', () {
     expect(canonicalShortcutModsForSave({'ctrl'}), ['ctrl']);
     expect(canonicalShortcutModsForSave({'shift', 'ctrl', 'primary', 'alt'}),
